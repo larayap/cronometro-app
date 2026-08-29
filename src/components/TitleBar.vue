@@ -14,7 +14,7 @@
         :class="{ selected: appStore.aplicacion }"
         @click="toggleAplicacion"
       >
-        <img src="@/assets/icon-work.svg" alt="Work Tracker" class="option-icon" />
+        <img src="@/assets/icon-work.svg" alt="Work" class="option-icon" />
       </div>
       <div
         class="option-card"
@@ -231,7 +231,7 @@ export default {
   -ms-user-select: none;
 
   /* Centra la imagen en la caja de 24×24 (S-2, judgment ronda 2): alcanza a las tres
-     tarjetas de tipo de módulo —Manual, Work Tracker, Pomodoro—, incluida la de Manual,
+     tarjetas de tipo de módulo —Manual, Work, Pomodoro—, incluida la de Manual,
      cuya imagen pasa de alinearse a la línea base a quedar centrada. Cambio de
      presentación menor y aceptado, documentado acá para que no se lea como omisión de
      alcance. */

@@ -87,7 +87,7 @@
     text-align: center;
     margin: 0;
   }
-  /* Mismo encabezado que Work Tracker y Pomodoro: icono y nombre en una fila.
+  /* Mismo encabezado que Work y Pomodoro: icono y nombre en una fila.
      `justify-content` centra el par dentro del módulo, porque acá el encabezado no
      comparte fila con botones que lo empujen a un costado. */
   .module-title {

@@ -9,7 +9,7 @@ del repositorio.
 **La aplicación solo corre en Windows** — ver [ADR-0004](memory/adrs/0004-os-dependent-code-single-module.md).
 Desarrollar o probar cambios requiere una máquina Windows.
 
-Usá la versión de Node declarada en [`.nvmrc`](.nvmrc):
+Usa la versión de Node declarada en [`.nvmrc`](.nvmrc):
 
 ```bash
 nvm use
@@ -35,7 +35,7 @@ real.
 npm run lint -- --no-fix
 ```
 
-**Usá siempre `--no-fix`.** `vue-cli-service lint` corrige automáticamente por defecto, y una
+**Usa siempre `--no-fix`.** `vue-cli-service lint` corrige automáticamente por defecto, y una
 de las reglas activas (`vue/no-deprecated-destroyed-lifecycle`, ver más abajo) es
 autocorregible: el autofix renombraría un hook de ciclo de vida y cambiaría el comportamiento
 de la aplicación sin que nadie lo pida. El mismo comando corre en integración continua ante
@@ -51,7 +51,7 @@ detrás de una decisión de diseño puntual, ahí está documentado.
 
 ## Abrir una contribución
 
-Usá la plantilla que aparece al abrir el Pull Request. Antes de pedir revisión, confirmá que
+Usa la plantilla que aparece al abrir el Pull Request. Antes de pedir revisión, confirma que
 `npm run lint -- --no-fix` termina sin errores.
 
 ## Roadmap conocido

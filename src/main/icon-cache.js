@@ -102,7 +102,7 @@ function getCacheFilePath() {
 // asset). Requerir el PNG directamente rompería ese bundle, así que se lee
 // el archivo del disco con `nativeImage.createFromPath`. La ruta se arma con
 // `__static` (global inyectada por `vue-cli-plugin-electron-builder` vía
-// `DefinePlugin`, ya usada en `background.js` para `icon-work.png`): en
+// `DefinePlugin`, ya usada en `background.js` para `icon-app.png`): en
 // desarrollo apunta a `public/`, y en un build empaquetado apunta a la raíz
 // de `directories.app` (que sí incluye lo copiado desde `public/`, a
 // diferencia de `src/`, que `directories.app` nunca contiene en ninguna

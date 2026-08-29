@@ -72,11 +72,11 @@ export default {
       applied: [],   // Almacena la selección aplicada al pulsar "Aplicar"
       showMenu: true,
       // El rótulo de cada tarjeta es el mismo nombre que encabeza el módulo una vez
-      // aplicado —`Manual`, `Work Tracker`, `Pomodoro`—, y el icono es el mismo que
+      // aplicado —`Manual`, `Work`, `Pomodoro`—, y el icono es el mismo que
       // usan la barra de título y esa cabecera: la tarjeta anticipa lo que se abre.
       options: [
         { value: 1, label: 'Manual', icon: iconManual },
-        { value: 2, label: 'Work Tracker', icon: iconWork },
+        { value: 2, label: 'Work', icon: iconWork },
         { value: 3, label: 'Pomodoro', icon: iconPomodoro },
       ],
       appStore: useAppStore(),
@@ -183,9 +183,8 @@ export default {
 <style scoped>
 .menu-container {
   /* 320px y no 280px: las tarjetas pasaron de una letra suelta al nombre completo del
-     módulo, y `Work Tracker` necesita ese ancho extra para partirse en dos líneas
-     legibles en vez de tres. La ventana acompaña sola — `resizeWindow()` mide
-     `scrollWidth`. */
+     módulo, y `Pomodoro` necesita ese ancho para entrar en una línea legible. La
+     ventana acompaña sola — `resizeWindow()` mide `scrollWidth`. */
   max-width: 320px;
   margin: auto;
   padding: 1rem;
@@ -209,7 +208,7 @@ export default {
   cursor: pointer;
   transition: all 0.2s ease;
 
-  /* Icono sobre rótulo. Las tres tarjetas quedan del mismo alto aunque `Work Tracker`
+  /* Icono sobre rótulo. Las tres tarjetas quedan del mismo alto aunque un rótulo
      ocupe dos líneas: el `stretch` por defecto del contenedor flex las iguala. */
   display: flex;
   flex-direction: column;

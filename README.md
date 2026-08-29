@@ -5,10 +5,15 @@ pomodoro y selección de programas monitoreados.
 
 ## Qué hace
 
-Work Tracker corre en la bandeja del sistema y mide cuánto tiempo pasás con cada aplicación
-de escritorio abierta y en foco. Elegís qué programas monitorear, revisás el historial de uso
-por día y por aplicación, y usás el temporizador Pomodoro integrado sin salir de la misma
+Work Tracker corre en la bandeja del sistema y mide cuánto tiempo pasas con cada aplicación
+de escritorio abierta y en foco. Eliges qué programas monitorear, revisas el historial de uso
+por día y por aplicación, y usas el temporizador Pomodoro integrado sin salir de la misma
 herramienta.
+
+## Manual de uso
+
+El [manual](docs/MANUAL.md) recorre la aplicación entera con capturas: los tres módulos, el
+selector de aplicaciones, los grupos, el historial, las opciones y la bandeja del sistema.
 
 ## Para quién es
 
@@ -26,18 +31,18 @@ macOS ni Linux hoy.
 
 ## Instalación
 
-Descargá el instalador (`.exe`) más reciente desde la sección
-[Releases](https://github.com/larayap/work-tracker/releases) del repositorio y ejecutalo.
+Descarga el instalador (`.exe`) más reciente desde la sección
+[Releases](https://github.com/larayap/work-tracker/releases) del repositorio y ejecútalo.
 
-### Si venís de una versión anterior (Workout)
+### Si vienes de una versión anterior (Workout)
 
 Work Tracker se instala **junto a** la versión anterior en vez de reemplazarla. La primera vez
 que lo abras, tu historial, tus preferencias y tu selección de programas se traspasan solos
-desde la instalación vieja; no tenés que hacer nada. Los datos originales quedan intactos como
+desde la instalación vieja; no tienes que hacer nada. Los datos originales quedan intactos como
 respaldo.
 
-Una vez que compruebes que tu historial está completo, **desinstalá la versión anterior**. Si
-seguís abriendo las dos, cada una registra su propio historial por separado y el traspaso ya no
+Una vez que compruebes que tu historial está completo, **desinstala la versión anterior**. Si
+sigues abriendo las dos, cada una registra su propio historial por separado y el traspaso ya no
 vuelve a ocurrir: terminarías con tu tiempo repartido entre dos aplicaciones.
 
 ## Firma de código
@@ -46,12 +51,6 @@ Los instaladores todavía no están firmados: al descargarlos, Windows muestra u
 SmartScreen, y al ejecutarlos aparece como «editor desconocido». No es una señal de que el
 archivo esté alterado, sino de que no hay un certificado de firma detrás — y un certificado
 comercial no es viable para un proyecto gratuito y sin ingresos.
-
-Work Tracker postuló al programa de firma gratuita para proyectos open source de
-[SignPath Foundation](https://signpath.org/), con la solicitud en revisión. Una vez aprobada,
-cada instalador publicado en Releases se firmará automáticamente durante el build, con un
-certificado provisto por la fundación: el editor que mostrará Windows será «SignPath
-Foundation», que es a nombre de quien se emiten los certificados del programa.
 
 ## Privacidad
 
