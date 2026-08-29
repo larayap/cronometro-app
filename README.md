@@ -10,6 +10,11 @@ de escritorio abierta y en foco. Eliges qué programas monitorear, revisas el hi
 por día y por aplicación, y usas el temporizador Pomodoro integrado sin salir de la misma
 herramienta.
 
+## Manual de uso
+
+El [manual](docs/MANUAL.md) recorre la aplicación entera con capturas: los tres módulos, el
+selector de aplicaciones, los grupos, el historial, las opciones y la bandeja del sistema.
+
 ## Para quién es
 
 Para cualquier persona que quiera entender en qué reparte su tiempo frente a aplicaciones de
