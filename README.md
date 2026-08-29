@@ -52,12 +52,6 @@ SmartScreen, y al ejecutarlos aparece como «editor desconocido». No es una se�
 archivo esté alterado, sino de que no hay un certificado de firma detrás — y un certificado
 comercial no es viable para un proyecto gratuito y sin ingresos.
 
-Work Tracker postuló al programa de firma gratuita para proyectos open source de
-[SignPath Foundation](https://signpath.org/), con la solicitud en revisión. Una vez aprobada,
-cada instalador publicado en Releases se firmará automáticamente durante el build, con un
-certificado provisto por la fundación: el editor que mostrará Windows será «SignPath
-Foundation», que es a nombre de quien se emiten los certificados del programa.
-
 ## Privacidad
 
 Work Tracker no tiene servidor, ni cuenta de usuario, ni telemetría. Todo lo que registra —el
