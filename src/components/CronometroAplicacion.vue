@@ -6,7 +6,7 @@
       </button>
       <h1 class="module-title">
         <img src="@/assets/icon-work.svg" alt="" class="module-icon" />
-        Work Tracker
+        Work
       </h1>
       <button
         class="button-add"
@@ -100,12 +100,13 @@
       <draggable
         v-model="dragNewGroup"
         class="drag-list new-group-list"
+        :class="{ 'is-dragging': isDragging }"
         group="monitored-rows"
         item-key="appId"
         @change="onNewGroupDragChange"
       >
         <template #header>
-          <div class="group-strip">Arrastrá aquí para agrupar</div>
+          <div class="group-strip">Arrastra aquí para agrupar</div>
         </template>
         <template #item="{ element }">
           <AppRow
@@ -364,10 +365,21 @@ export default {
 
 /* La etiqueta de invitación vive en el slot #header de este `<draggable>` (D-6),
    así que el nodo Sortable ya tiene alto propio y el `min-height` deja de crear
-   área desde cero. Lo que preserva ahora es el área de destino por debajo de la
-   etiqueta: el alto de la etiqueta (~31px) más los 40px que el bloque tenía como
-   única superficie de drop antes de que la etiqueta entrara al nodo. */
+   área desde cero.
+
+   En reposo el bloque mide lo que mide la etiqueta (~31px): sin un arrastre en
+   curso no hay nada que soltar, y el hueco vacío de 40px que se reservaba
+   debajo solo separaba la franja del resto del módulo. Durante el arrastre sí
+   hace falta superficie, así que `is-dragging` restituye los 72px —etiqueta más
+   los 40px de área de destino— y el crecimiento, además, señala la zona de drop
+   apenas empieza el gesto. La transición va sobre `min-height` y no sobre
+   `height` porque el alto real lo fija el contenido cuando una fila entra. */
 .new-group-list {
+  min-height: 32px;
+  transition: min-height 0.15s ease;
+}
+
+.new-group-list.is-dragging {
   min-height: 72px;
 }
 
