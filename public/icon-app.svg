@@ -1,0 +1,51 @@
+<!-- Maestro vectorial del icono de la app (cronómetro), reconstruido a partir de
+     `icon-app-256.png` sobre la misma grilla de 256×256.
+
+     No es un trazado automático del bitmap: el PNG está muy desenfocado (los bordes
+     tienen una transición gaussiana de σ ≈ 3,7 px), así que vectorizarlo produciría
+     contornos ondulados. En su lugar cada forma se remidió con precisión subpíxel
+     sobre el original y se rehízo con primitivas exactas, ajustadas por mínimos
+     cuadrados (círculos: rms ≤ 0,42 px; curva del cuello: rms 0,18 px). Escala sin
+     dientes de sierra y sigue siendo editable.
+
+     Única desviación deliberada respecto del original: en el PNG el aro del dial NO
+     es concéntrico con la caja (está 1,7 px a la derecha, lo que deja la banda blanca
+     3 px más ancha a la izquierda). Ese desvío del rasterizado se corrigió centrando
+     el aro en el disco; para recuperar la copia literal, aro en (129.74, 145.29).
+
+     Las manecillas SÍ conservan su posición original, con el codo 1,8 px a la
+     izquierda y 4,4 px bajo el centro del dial. Centrarlas se probó y se descartó:
+     el conjunto se leía raro respecto del icono de siempre.
+
+     El fondo negro replica el del PNG (imagen en escala de grises, sin canal alfa).
+     Para una versión con fondo transparente, borrar el <rect id="fondo">.
+
+     La ranura del botón es el único elemento reconstruido en vez de medido: el
+     desenfoque la dejó como una mancha gris de la que no se puede despejar grosor y
+     largo a la vez. Se dimensionó por su extensión aparente (11 px de ancho, borde a
+     borde entre x=67 y x=187,5), que es como se percibe en el original; ajustarla en
+     cambio por cantidad de tinta daba un trazo de 7 px que se veía demasiado fino. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect id="fondo" width="256" height="256" fill="#000000"/>
+
+  <!-- Silueta blanca: botón superior, cuello y caja del cronómetro -->
+  <g fill="#ffffff">
+    <rect x="54.19" y="7.06" width="146.13" height="33.17" rx="5.5"/>
+    <!-- El cuello se cierra por una cuerda horizontal (no por el arco del disco) y
+         se mete 2 px bajo el botón: solapa ambas formas en vez de compartir borde
+         con ellas, que es lo que dejaba una costura visible al ampliar. -->
+    <path d="M85 38 L85 40.2
+             Q94.77 45.2 80.63 52.98
+             L175.53 52.98
+             Q161.39 45.2 171.16 40.2 L171.16 38 Z"/>
+    <circle cx="128.08" cy="144.56" r="103.14"/>
+  </g>
+
+  <!-- Detalles calados en negro: ranura del botón, aro del dial y manecillas -->
+  <g fill="none" stroke="#000000">
+    <path d="M72.5 24.3 H182" stroke-width="11" stroke-linecap="round"/>
+    <circle cx="128.08" cy="144.56" r="74.43" stroke-width="9.91"/>
+    <path d="M126.25 94.4 V149 H163.6"
+          stroke-width="13.55" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
