@@ -1,6 +1,6 @@
 ---
 name: Reporte de fallo
-about: Reportá un comportamiento inesperado de la aplicación
+about: Reporta un comportamiento inesperado de la aplicación
 title: "[bug] "
 labels: bug
 ---
@@ -29,4 +29,4 @@ Qué pasó en realidad.
 
 ## Sistema operativo
 
-<!-- Work Tracker solo corre en Windows — indicá la versión (Windows 10, Windows 11, etc.) -->
+<!-- Work Tracker solo corre en Windows — indica la versión (Windows 10, Windows 11, etc.) -->

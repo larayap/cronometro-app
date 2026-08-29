@@ -1,6 +1,6 @@
 ---
 name: Propuesta de función
-about: Proponé una función nueva para la aplicación
+about: Propón una función nueva para la aplicación
 title: "[feature] "
 labels: enhancement
 ---
