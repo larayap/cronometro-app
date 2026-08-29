@@ -77,7 +77,7 @@ module.exports = {
         ],
         win: {
           target: 'nsis',
-          icon: 'public/icon-work-256.png',
+          icon: 'public/icon-app-256.png',
           executableName: 'Work Tracker'
         },
      /*    mac: {

@@ -44,13 +44,15 @@ if (!gotTheLock) {
 }
 
 function createTray() {
-  // Ruta del ícono para la bandeja
-
-  const iconPath = path.join(__static, 'img', 'icon-work.png')
+  // Ruta del ícono para la bandeja. Es el mismo arte que el de la barra de
+  // tareas (`icon-app-256.png`), rasterizado aparte a 32 px: el glifo ocupa
+  // más caja dentro de la baldosa que en la versión grande porque a ese
+  // tamaño las marcas del dial, si no, se funden en una sola barra.
+  const iconPath = path.join(__static, 'img', 'icon-app.png')
   tray = new Tray(iconPath)
 
   // Tooltip que aparece al pasar el ratón sobre el ícono
-  tray.setToolTip('Work Tracker')
+  tray.setToolTip('Work')
 
   // Menú contextual al hacer clic derecho en el ícono
   const contextMenu = Menu.buildFromTemplate([
@@ -81,8 +83,8 @@ async function createWindow() {
   mainWindow  = new BrowserWindow({
     width: 500,
     height: 330,
-    title: 'Work Tracker',
-    icon: path.join(__static, 'icon-work-256.png'),
+    title: 'Work',
+    icon: path.join(__static, 'icon-app-256.png'),
     backgroundColor: '#0f0f0f', // Cambia este valor por el color que desees
     frame: false,
     show: false,
