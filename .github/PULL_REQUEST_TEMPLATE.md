@@ -1,11 +1,11 @@
 ## Qué resuelve
 
-Describí el problema o la función que este cambio aborda. Si cierra un issue, enlazalo
+Describe el problema o la función que este cambio aborda. Si cierra un issue, enlázalo
 (`Closes #123`).
 
 ## Cómo se probó
 
-Describí cómo verificaste el cambio: pasos manuales, capturas si aplica, o cualquier
+Describe cómo verificaste el cambio: pasos manuales, capturas si aplica, o cualquier
 verificación relevante.
 
 ## Checklist
