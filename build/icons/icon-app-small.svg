@@ -1,0 +1,43 @@
+<!-- Arte del icono ajustado para los tamaños chicos del .ico (16, 20 y 24 px).
+
+     Deriva de `public/icon-app.svg`, que es el maestro y la única fuente del
+     dibujo. A 16 px la grilla de 256 se comprime 16 veces: el aro del dial
+     quedaría en 0,62 px y las manecillas en 0,85 px, o sea por debajo del
+     píxel. Engrosarlos no alcanza —el aro y el disco se tocan—, así que acá el
+     aro desaparece y el dial pasa a ser un disco blanco macizo con las
+     manecillas caladas a 32 px de grosor (2 px a tamaño 16). Es el mismo
+     recurso que usan los iconos del sistema: a esta escala la silueta es lo
+     único que se lee.
+
+     Otros dos ajustes respecto del maestro:
+
+     - El botón se acorta (136 px de ancho contra 146) y su ranura sube a 20 px
+       de grosor, que es el mínimo para que a 16 px siga separando las dos
+       mitades en vez de volverse una mancha gris.
+     - Las manecillas se centran en el disco. El maestro las corre 1,8 px a la
+       izquierda y 4,4 px abajo del centro, un desvío deliberado que a tamaño
+       grande da carácter; acá ese mismo desvío desbalancea la L y confunde la
+       lectura, así que el codo va en (124, 154).
+
+     Los tamaños de 32 a 48 px usan `icon-app-medium.svg` y los de 64 para
+     arriba el maestro. El reparto vive en `build/icons/generate-icons.py`. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect id="fondo" width="256" height="256" fill="#000000"/>
+
+  <!-- Silueta blanca: botón superior, cuello y disco macizo del cronómetro -->
+  <g fill="#ffffff">
+    <rect x="60" y="12" width="136" height="40" rx="6"/>
+    <path d="M98 50 L98 54
+             Q108 60 90 70
+             L166 70
+             Q148 60 158 54 L158 50 Z"/>
+    <circle cx="128" cy="152" r="98"/>
+  </g>
+
+  <!-- Detalles calados en negro: ranura del botón y manecillas (sin aro) -->
+  <g fill="none" stroke="#000000">
+    <path d="M84 32 H172" stroke-width="20" stroke-linecap="butt"/>
+    <path d="M124 100 V154 H176"
+          stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

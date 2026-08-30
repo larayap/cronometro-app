@@ -77,7 +77,15 @@ module.exports = {
         ],
         win: {
           target: 'nsis',
-          icon: 'public/icon-app-256.png',
+          // `.ico` de nueve tamaños (16 a 256) generado por
+          // `build/icons/generate-icons.py`. Windows elige del archivo la
+          // imagen que coincide con la ranura que va a pintar en vez de
+          // escalar, así que apuntar acá a un PNG suelto dejaba que
+          // electron-builder derivara los tamaños chicos de una sola imagen
+          // grande y el icono se veía sucio en la barra de tareas y en la
+          // lista de descargas. electron-builder toma este mismo archivo para
+          // el instalador NSIS y su desinstalador.
+          icon: 'public/icon-app.ico',
           executableName: 'Work Tracker'
         },
      /*    mac: {

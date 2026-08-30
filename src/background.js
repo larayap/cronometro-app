@@ -44,10 +44,12 @@ if (!gotTheLock) {
 }
 
 function createTray() {
-  // Ruta del ícono para la bandeja. Es el mismo arte que el de la barra de
-  // tareas (`icon-app-256.png`), rasterizado aparte a 32 px: el glifo ocupa
-  // más caja dentro de la baldosa que en la versión grande porque a ese
-  // tamaño las marcas del dial, si no, se funden en una sola barra.
+  // Ruta del ícono para la bandeja. `Tray` pide un PNG, así que va aparte del
+  // `.ico` del resto de la app, pero sale del mismo arte: 32 px rasterizados
+  // desde `build/icons/icon-app-medium.svg`, que engrosa los trazos del
+  // maestro porque a ese tamaño las marcas del dial, si no, se funden en una
+  // sola barra. Electron levanta solo el `icon-app@2x.png` de al lado cuando
+  // el escritorio corre escalado.
   const iconPath = path.join(__static, 'img', 'icon-app.png')
   tray = new Tray(iconPath)
 
@@ -84,7 +86,10 @@ async function createWindow() {
     width: 500,
     height: 330,
     title: 'Work',
-    icon: path.join(__static, 'icon-app-256.png'),
+    // Mismo `.ico` multi-tamaño que el ejecutable: Windows toma de él
+    // la imagen del tamaño que pide cada superficie (barra de tareas,
+    // Alt+Tab, miniatura de la ventana).
+    icon: path.join(__static, 'icon-app.ico'),
     backgroundColor: '#0f0f0f', // Cambia este valor por el color que desees
     frame: false,
     show: false,
