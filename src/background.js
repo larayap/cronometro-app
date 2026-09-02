@@ -97,6 +97,11 @@ async function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
+      // Chromium reduce a un disparo por minuto los timers encadenados de
+      // ventanas ocultas u ocluidas ("intensive wake-up throttling"). El
+      // pomodoro necesita que su tick se dispare puntualmente para sonar
+      // el fin de bloque a tiempo aunque la ventana esté tapada o minimizada.
+      backgroundThrottling: false,
     },
     trafficLightPosition: {
       x: 15,

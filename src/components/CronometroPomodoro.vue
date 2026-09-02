@@ -71,6 +71,11 @@ export default {
       currentIndex: 0,
       currentTime: 60,
       timer: null,
+      // Instante (ms, Date.now()) en el que termina el bloque en curso.
+      // null cuando no hay bloque corriendo. El restante mostrado se
+      // recalcula desde este valor en cada tick, en vez de contar
+      // disparos de setInterval (ver tick()).
+      endAt: null,
       editingIndex: null,
       editValue: null,
     }
@@ -163,6 +168,13 @@ export default {
       }
       if (this.editingIndex === this.currentIndex) {
         this.currentTime = newTime
+        // Si el bloque editado es el que está corriendo, reprogramamos
+        // el instante de fin con la nueva duración; si está pausado
+        // basta con dejar currentTime actualizado (start() recalculará
+        // endAt al reanudar).
+        if (this.running) {
+          this.endAt = Date.now() + this.currentTime * 1000
+        }
       }
       this.editingIndex = null
       this.editValue = null
@@ -179,9 +191,19 @@ export default {
     }
     this.$playSound('pressButton')
     this.running = true
+    // Fijamos el instante de fin del bloque desde el reloj del sistema.
+    // Si veníamos de una pausa, currentTime ya trae el restante
+    // congelado, así que esto reanuda desde ahí en vez de reiniciar.
+    this.endAt = Date.now() + this.currentTime * 1000
     this.timer = setInterval(this.tick, 1000)
     },
     pause() {
+      // Recalculamos el restante una última vez desde endAt antes de
+      // congelarlo en currentTime, para no perder el tiempo transcurrido
+      // entre el último tick y el momento de pausar.
+      if (this.endAt !== null) {
+        this.currentTime = Math.max(0, Math.ceil((this.endAt - Date.now()) / 1000))
+      }
       clearInterval(this.timer)
       this.$playSound('pressButton')
       this.running = false
@@ -191,6 +213,7 @@ export default {
       this.$playSound('pressButton')
       this.running = true
       this.currentTime = this.sessions[this.currentIndex]?.time || 0
+      this.endAt = Date.now() + this.currentTime * 1000
       this.timer = setInterval(this.tick, 1000)
     },
     cancel() {
@@ -199,11 +222,18 @@ export default {
       this.running = false
       this.currentIndex = 0
       this.currentTime = this.sessions[this.currentIndex]?.time || 0
+      this.endAt = null
     },
     tick() {
-      if (this.currentTime > 0) {
-        this.currentTime--
-      } else {
+      // Restante derivado del reloj del sistema, no de la cantidad de
+      // disparos del intervalo: si Chromium aplica intensive wake-up
+      // throttling a la ventana oculta/ocluida y el intervalo se dispara
+      // tarde, el valor mostrado se corrige solo en el siguiente disparo.
+      this.currentTime = Math.max(0, Math.ceil((this.endAt - Date.now()) / 1000))
+      if (this.currentTime <= 0) {
+        // Cortamos el intervalo antes de pasar de bloque para que un
+        // disparo tardío repetido no invoque nextSession() más de una vez.
+        clearInterval(this.timer)
         this.nextSession()
       }
     },
@@ -213,10 +243,12 @@ export default {
       if (this.currentIndex < this.sessions.length - 1) {
         this.currentIndex++
         this.currentTime = this.sessions[this.currentIndex].time
+        this.endAt = Date.now() + this.currentTime * 1000
         this.timer = setInterval(this.tick, 1000)
       } else {
         this.$playSound('endSession')
         this.running = false
+        this.endAt = null
       }
     }
   },
